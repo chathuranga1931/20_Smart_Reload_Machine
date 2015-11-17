@@ -1,0 +1,36 @@
+  Revised: Thursday, June 25, 2015
+          Revision: 
+
+
+
+
+
+
+
+Bill Of Materials           June 25,2015      22:24:21	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	2	C15,C14	1000uf(25V)
+2	1	C16	100nf
+3	1	C17	220uf
+4	1	DMUX	Multiplexure
+5	5	D11,D12,D13,D14,D15	1N4007
+6	1	D16	PWR
+7	1	GSM1	GSM Module 1
+8	1	GSM2	GSM Module 2
+9	2	JP2,JP1	12Vdc Con
+10	1	JP5	13.5VDC
+11	2	KP,KP0	4x4 Key Pad
+12	2	LCD1,LCD0	16X2 LCD 
+13	1	MUX	Demultiplexure
+14	1	PC	Computer
+15	1	RTC	Real Time Clock
+16	1	R20	470
+17	1	R21	1K
+18	1	R22	20K
+19	1	TMP	Thermal Printer
+20	1	Uc	ATMEL 328
+21	1	U7	LM317
+22	1	U8	LM7805

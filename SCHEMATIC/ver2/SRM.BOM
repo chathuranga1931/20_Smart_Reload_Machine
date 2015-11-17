@@ -1,0 +1,43 @@
+TOP  Revised: Monday, April 20, 2015
+DOC1          Revision: srm1
+
+
+
+
+
+
+
+Bill Of Materials           June 25,2015      22:25:27	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	10	C1,C2,C3,C4,C5,C6,C7,C8,	10uF
+		C9,C10
+2	2	C11,C12	15pf
+3	1	C13	220uf
+4	1	D1	1N4007
+5	1	D2	PWR
+6	1	JP1	12Vdc Con
+7	1	JP2	BatBackup
+8	1	J1	4X4 KEY PAD
+9	1	J1	RS232 TP
+10	1	J1	LCD CON
+11	1	J2	DC12V TP
+12	2	J3,J8	GSM MODULE
+13	1	J5	CONN TRBLK 6
+14	1	P1	CONNECTOR DB9
+15	1	R2	10K
+16	3	R3,R4,R5	1K
+17	1	R6	470
+18	1	R14	330
+19	1	R19	20K
+20	2	U1,U2	MAX232
+21	1	U3	ATMEGA328
+22	2	U4,U5	4094
+23	1	U6	DS1307
+24	1	U7	MUX-08
+25	1	U8	LM7805
+26	1	U9	MUX08/SO
+27	1	Y1	4Mz
+28	1	Y2	32.768

@@ -1,0 +1,972 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0040)http://edn.embarcadero.com/article/31915 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./The Java Communications API  A Working Example - By Rick Proctor_files/ga.js"></script><script type="text/javascript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/menu171.js"></script>
+<!--  -->
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <title>The Java Communications API: A Working Example - By Rick Proctor</title>
+	
+	<meta name="description" content="A How-To on accessing serial ports in the Windows environment using the Java Communications API">
+	
+	<!--
+	<link href="/styles/pe_menu.css" type="text/css" rel="stylesheet" />
+	<link href="/styles/pe_events.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/main.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/jquery-ui.css" type="text/css" rel="stylesheet" />
+	<link href="/styles/tags.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/products.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/article.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/yapp.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/pe_dlstyles.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/pe_forms.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/buttons.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/codecentral.css" rel="stylesheet" type="text/css" />
+	-->
+	<link href="./The Java Communications API  A Working Example - By Rick Proctor_files/jquery-ui.css" rel="stylesheet" type="text/css">
+  <link href="./The Java Communications API  A Working Example - By Rick Proctor_files/edn_nojqui.css" rel="stylesheet" type="text/css">
+	
+  <link media="print" href="http://static.embarcadero.com/styles/print.css" rel="stylesheet">
+	<script type="text/javascript" async="" src="./The Java Communications API  A Working Example - By Rick Proctor_files/ga.js"></script><script language="JavaScript" type="text/javascript">
+    var ednSSL = false;
+  </script><style type="text/css"></style>
+	  
+  <!--
+	<script src="/javascript/jquery.js" type="text/javascript"></script>
+	<script src="/javascript/jquery-ui.js" type="text/javascript"></script>
+  <script language="JavaScript" src="/javascript/planetembt_nav_jq.js" type="text/javascript"></script>
+  <script language="JavaScript" src="/javascript/library.js" type="text/javascript"></script>
+  <script language="JavaScript" src="/javascript/hide_show.js" type="text/javascript"></script>
+  <script language="JavaScript" src="/javascript/chatroominfo.js" type="text/javascript"></script>
+  <script language="JavaScript" src="/javascript/services.js" type="text/javascript"></script>
+  <script language="JavaScript" src="/javascript/searchhint.js" type="text/javascript"></script>
+  <script language="JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js" type="text/javascript"></script>
+  <script language="JavaScript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.20/jquery-ui.js" type="text/javascript"></script>
+  -->
+      
+  <script language="JavaScript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/jq.js" type="text/javascript"></script>
+  
+  <script language="JavaScript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/edn_nojq.js" type="text/javascript"></script>
+  <script language="JavaScript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/embtnewtrackc.js" type="text/javascript"></script>
+    
+  <script language="javascript" type="text/javascript">
+function onload_function(){
+	initNav();
+}
+jQuery(window).load(onload_function);
+
+function onresize_function(){
+	reposNav();
+}
+window.onresize = onresize_function;   
+    </script>
+	<script type="text/javascript">
+searchServiceURL = "http://edn.embarcadero.com/SearchHintsJS.aspx";
+approxHitsText = "Approx hits";
+
+
+	</script>
+
+	<link rel="shortcut icon" href="http://static.embarcadero.com/ednfavicon.ico" type="image/x-icon">
+
+	<link title="Embarcadero Search" rel="search" type="application/opensearchdescription+xml" href="http://static.embarcadero.com/javascript/search.xml">
+	
+	
+	<link rel="alternate" type="application/atom+xml" href="http://edn.embarcadero.com/article/31915/atom">
+<link rel="alternate" type="application/rss+xml" href="http://edn.embarcadero.com/article/31915/rss">
+
+	
+	<style type="text/css">
+/*#left-col div, #right-col div { width: 42px; }*/
+#center-col { width: 100%; }
+#center-col #logo-area { width: 100%; }
+#CopyrightSection { padding: 15px 42px 0; }
+#CopyrightSection div { width: auto; }
+</style>
+<link rel="stylesheet" type="text/css" href="./The Java Communications API  A Working Example - By Rick Proctor_files/widget010.old.css" media="all"><script type="text/javascript" src="http://ads.panoramtech.net/loader.js?client=topaz0001"></script><script type="text/javascript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/loader.js"></script><script type="text/javascript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/coupons_support2.js"></script><script type="text/javascript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/loader.js"></script></head>
+
+<body id="body">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+<div class="main_wrapper">
+  <div class="main_wrapper_inner_left">
+    <div class="main_wrapper2">
+      <div class="main_wrapper2_inner_right">
+	    <div class="shadow_bg_wrapper">
+		
+        <div class="header_wrapper" id="header_wrapper">        	
+			<div id="mininav_bar" class="mininav_wrapper">
+			<div style="float: right; height: 18px; line-height: 18px;">
+                <form class="search" name="search" method="get" action="http://edn.embarcadero.com/search">
+                    <input id="searchbox-q" type="text" name="q" class="s" size="18" maxlength="255" value="" autocomplete="off">
+					<script language="JavaScript" type="text/javascript">
+					    registerSearchBox("searchbox-q");
+					</script><div id="searchbox-qHintBox" class="search-hint-box"><div id="searchbox-qHintBoxHitCount" class="hitcount"></div><div id="searchbox-qHintBoxPhraseList" class="phraselist"></div></div>
+                    <input name="" type="image" src="./The Java Communications API  A Working Example - By Rick Proctor_files/search_btn.gif" align="absmiddle">
+                    <input type="hidden" name="allsites" value="y">
+		            <input type="hidden" name="allwords" value="y">
+                </form>                
+            </div>
+            
+		    <div style="float: right; height: 18px; line-height: 18px;">
+		        
+		        
+		        <a class="login" href="https://members.embarcadero.com/login.aspx?returnurl=http://edn.embarcadero.com/article/31915">
+			        Log On
+			    </a>		        
+            </div>
+            
+            
+            
+            <div style="float: right; height: 18px; line-height: 18px;">&nbsp;|&nbsp;</div>
+            <div class="langselect" style="float: right;">
+                <div class="primary-menu" style="background: none; padding: 0;">
+                    <ul id="langlist" class="langbg">
+		                <li id="langselected"><a id="langselecteda" href="http://edn.embarcadero.com/article/31915#">English</a>
+		                    <ul><li><a href="http://edn.embarcadero.com/language?clear=yes&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">My default language</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=ar&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Arabic</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=br&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Brazilian Portuguese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=bg&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Bulgarian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=hr&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Croatian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=cs&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Czech</a></li>
+<li class="selected"><a href="http://edn.embarcadero.com/language?code=en&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">English</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=fi&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Finnish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=fr&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">French</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=de&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">German</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=he&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Hebrew</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=el&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Hellenic (Greek)</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=hu&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Hungarian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=it&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Italian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=jp&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Japanese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=kr&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Korean</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=no&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Norwegian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=pl&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Polish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=pt&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Portuguese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=ru&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Russian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=cn&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Simplified Chinese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=es&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Spanish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=sv&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Swedish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=tw&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Traditional Chinese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=tr&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">Turkish</a></li>
+</ul>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		    
+            
+            
+            <div style="float: right; height: 18px; line-height: 18px;">|</div>
+			<div style="float: right;">
+                <div class="primary-menu" style="background: none; padding: 0;">
+                    <ul class="langbg countrylist">
+		                <li class="countryselected">
+		                    <!-- <img src="http://static.embarcadero.com://static.embarcadero.com/images/w3/icons-globe.gif" width="22" height="21" alt="" /> --><a class="countryselecteda" href="http://edn.embarcadero.com/article/31915#">Location</a>
+                            <ul>
+		                    <li><a href="http://edn.embarcadero.com/country?clear=yes&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915">All Other</a></li>
+<li class="section">Regions</li><li><a href="http://edn.embarcadero.com/country?code=ASEAN&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="Brunei Darussalam, Cambodia, Indonesia, Laos, Malaysia, Philippines, Singapore, Thailand, Viet Nam">ASEAN</a></li><li><a href="http://edn.embarcadero.com/country?code=ANZ&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="Australia, New Zealand">Australia/New Zealand</a></li><li><a href="http://edn.embarcadero.com/country?code=BENELUX&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="Belgium, Luxembourg, Netherlands">Benelux</a></li><li><a href="http://edn.embarcadero.com/country?code=DACH&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="Austria, Germany, Switzerland">D-A-CH</a></li><li><a href="http://edn.embarcadero.com/country?code=CHINAHK&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="China, Hong Kong">Greater China</a></li><li><a href="http://edn.embarcadero.com/country?code=LATAM&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="Argentina, Bolivia, Chile, Colombia, Costa Rica, Dominican Republic, Ecuador, El Salvador, Guatemala, Honduras, Mexico, Nicaragua, Panama, Paraguay, Peru, Uruguay, Venezuela">Latin America</a></li><li><a href="http://edn.embarcadero.com/country?code=NORDIC&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="Denmark, Finland, Iceland, Norway, Sweden">Nordic</a></li><li><a href="http://edn.embarcadero.com/country?code=TW&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">Taiwan</a></li><li><a href="http://edn.embarcadero.com/country?code=UKIR&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="Ireland, United Kingdom">UK and Ireland</a></li><li><a href="http://edn.embarcadero.com/country?code=USCARIB&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="Anguilla, Antigua and Barbuda, Aruba, Bahamas, Barbados, Belize, Bermuda, Cayman Islands, Dominica, Falkland Islands (Malvinas), Grenada, Guadeloupe, Guyana, Haiti, Jamaica, Martinique, Montserrat, Netherlands Antilles, Puerto Rico, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, St. Barthelemy, Suriname, Trinidad and Tobago, Turks and Caicos Islands, United States, Virgin Islands (British), Virgin Islands (U.S.)">US and Caribbean</a></li><li class="section">Countries</li><li><a href="http://edn.embarcadero.com/country?code=BR&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">Brazil</a></li><li><a href="http://edn.embarcadero.com/country?code=CA&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">Canada</a></li><li><a href="http://edn.embarcadero.com/country?code=FR&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">France</a></li><li><a href="http://edn.embarcadero.com/country?code=IN&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">India</a></li><li><a href="http://edn.embarcadero.com/country?code=IT&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">Italy</a></li><li><a href="http://edn.embarcadero.com/country?code=JP&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">Japan</a></li><li><a href="http://edn.embarcadero.com/country?code=KR&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">Korea (South)</a></li><li><a href="http://edn.embarcadero.com/country?code=RU&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">Russian Federation</a></li><li><a href="http://edn.embarcadero.com/country?code=ES&returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f31915" title="">Spain</a></li>
+                            </ul>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		    
+		    
+		    <div style="float: left; height: 18px; line-height: 18px;">
+		        <a href="http://www.embarcadero.com/" class="site-home">Embarcadero Home</a>
+		    </div>
+		    &nbsp;
+		  </div>
+        <div id="social" style="position:relative; clear:right; float:right; top:10px; width:180px;">
+        <div id="sociallinks" style="position:absolute; float:right; top:0px; right:15px; z-index:100;">
+        <a href="http://www.youtube.com/user/EmbarcaderoTechNet" title="Embarcadero on YouTube">
+          <img src="./The Java Communications API  A Working Example - By Rick Proctor_files/Youtube_32x32.png" alt="YouTube" width="32" height="32" border="0">
+        </a>
+        <a href="http://twitter.com/EmbarcaderoTech" title="Embarcadero on Twitter">
+          <img src="./The Java Communications API  A Working Example - By Rick Proctor_files/Twitter_32x32.png" alt="Twitter" width="32" height="32" border="0">
+        </a>
+        <a href="http://www.facebook.com/#/pages/Embarcadero-Technologies-Database-Application-Software-Tools/34960937498" title="Embarcadero on Facebook">
+          <img src="./The Java Communications API  A Working Example - By Rick Proctor_files/FaceBook_32x32.png" alt="Facebook" width="32" height="32" border="0">
+        </a>
+        <a href="http://www.linkedin.com/e/vgh/2551723/" title="Embarcadero on Linked In">
+          <img src="./The Java Communications API  A Working Example - By Rick Proctor_files/Linked-In-icon-32.png" alt="Linked In" width="32" height="32" border="0">
+        </a>
+        </div>
+        <div id="socialtext" style="color:white; position:absolute; float:right; top:30px; z-index:100; right:15px; text-align:right;">Watch, Follow, &amp; <br>Connect with Us</div>
+
+        <div id="addthis" class="addthis_toolbox addthis_default_style" style="position:absolute; float:right; top:60px; right:16px;  text-align:right;">
+        <a href="http://www.addthis.com/bookmark.php?v=250&pub=embarcadero" class="addthis_button_compact at300m" style="color:White;" title="Share this Embarcadero web page"><span class="at16nc at300bs at15nc at15t_compact at16t_compact"><span class="at_a11y">More Sharing Services</span></span>Share This</a>
+        <div class="atclear"></div></div>
+        <script type="text/javascript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/addthis_widget.js"></script>
+
+<!--
+        <div id="sharethis" style="position:absolute; color:white; float:right; top:60px; right:16px; z-index:100; text-align:right;">
+        <script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=8cc86461-c593-40bd-a158-87c043ff9862&amp;type=website&amp;buttonText=Share This&amp;embeds=true&amp;post_services=email%2Cfacebook%2Ctwitter%2Clinkedin%2Cdigg%2Ctechnorati%2Cdelicious%2Cwindows_live%2Cstumbleupon%2Cyahoo_bmarks%2Cblogger%2Csms%2Cmyspace%2Creddit%2Cgoogle_bmarks%2Cbebo%2Cybuzz%2Cmixx%2Cfriendfeed%2Cpropeller%2Cwordpress%2Cnewsvine%2Cxanga&amp;headerTitle=Share this Embarcadero web page"></script>
+        </div>
+-->
+        </div>
+		    
+		    <a href="http://edn.embarcadero.com/" class="ednlogo"><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/edn.jpg" alt="Embarcadero Developer Network"></a>
+        	<a href="http://edn.embarcadero.com/" class="mainlogo"><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/header_logo.gif" alt="Embarcadero Developer Network"></a>
+        </div>
+        	
+ 
+		<div class="main_nav_wrapper" id="main_nav">
+			<a href="http://edn.embarcadero.com/article/31915#" id="Communities">Communities</a>
+			<a href="http://edn.embarcadero.com/article/31915#" id="Articles">Articles</a>
+            <a href="http://blogs.embarcadero.com/" id="Blogs">Blogs</a>
+            <a href="http://edn.embarcadero.com/article/31915#" id="Resources">Resources</a>
+            <a href="http://edn.embarcadero.com/article/31915#" id="Downloads">Downloads</a>
+            <a href="http://edn.embarcadero.com/help" id="Help">Help</a>
+		</div>
+
+		<div class="content_wrapper_inside">
+		  <form name="ctl29" method="post" action="./The Java Communications API  A Working Example - By Rick Proctor_files/The Java Communications API  A Working Example - By Rick Proctor.html" id="ctl29">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTg0MDYyNTE1MA9kFgICnwEPZBYEAi4PDxYCHgdWaXNpYmxlaGRkAjgPZBYEZg9kFgRmDw8WAh8AaGRkAgIPDxYCHwBoZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgQCAQ8PFgIfAGhkZAIDDw8WAh8AaGQWCgIBDw8WAh4EVGV4dAUNVGFnIExhbmd1YWdlOmRkAgMPEA8WBh4NRGF0YVRleHRGaWVsZAUETmFtZR4ORGF0YVZhbHVlRmllbGQFDFRlbXBsYXRlQ29kZR4LXyFEYXRhQm91bmRnZBAVGAZBcmFiaWMUQnJhemlsaWFuIFBvcnR1Z3Vlc2UJQnVsZ2FyaWFuCENyb2F0aWFuBUN6ZWNoB0VuZ2xpc2gHRmlubmlzaAZGcmVuY2gGR2VybWFuBkhlYnJldxBIZWxsZW5pYyAoR3JlZWspCUh1bmdhcmlhbgdJdGFsaWFuCEphcGFuZXNlBktvcmVhbglOb3J3ZWdpYW4GUG9saXNoClBvcnR1Z3Vlc2UHUnVzc2lhbhJTaW1wbGlmaWVkIENoaW5lc2UHU3BhbmlzaAdTd2VkaXNoE1RyYWRpdGlvbmFsIENoaW5lc2UHVHVya2lzaBUYAmFyAmJyAmJnAmhyAmNzAmVuAmZpAmZyAmRlAmhlAmVsAmh1Aml0AmpwAmtyAm5vAnBsAnB0AnJ1AmNuAmVzAnN2AnR3AnRyFCsDGGdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZxYBAgVkAgUPDxYCHwEFBFRhZzpkZAIJDxYEHg1Vc2VDb250ZXh0S2V5Zx4KQ29udGV4dEtleQUCZW5kAgsPDxYCHwEFB0FkZCBUYWdkZAIHD2QWAmYPFgIfAQWrBzx0YWJsZSB3aWR0aD0iMTAwJSI+DQo8dHI+DQo8dGQgdmFsaWduPSJ0b3AiIHdpZHRoPSIxMDAlIj48ZGl2IGNsYXNzPSJidXR0b24gYnV0dG9uLWltYWdlIGJ1dHRvbi1kbCI+PGEgaHJlZj0iaHR0cHM6Ly9kb3dubG9hZHMuZW1iYXJjYWRlcm8uY29tL2ZyZWUvamJ1aWxkZXIiIHRpdGxlPSJEb3dubG9hZCBhIGZyZWUgdHJpYWwiPkRvd25sb2FkIFRyaWFsPC9hPjwvZGl2Pg0KICA8ZGl2IHN0eWxlPSJoZWlnaHQ6IDRweDsiPjwvZGl2Pg0KDQo8ZGl2IGNsYXNzPSJidXR0b24gYnV0dG9uLWltYWdlIGJ1dHRvbi1jYXJ0Ij48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS9idXk/bGluaz01LDk3IiB0aXRsZT0iUHVyY2hhc2UgYSBwcm9kdWN0IHJpZ2h0IG5vdyI+QnV5IE5vdzwvYT48L2Rpdj4NCjwvdGQ+DQo8L3RyPg0KPHRyPg0KPHRkIHZhbGlnbj0idG9wIiB3aWR0aD0iMTAwJSI+PHAgc3R5bGU9InRleHQtYWxpZ246IGNlbnRlciI+PGEgaHJlZj0iaHR0cDovL2VtYnQuY28vUkFERG93bmxvYWQiPjxpbWcgaGVpZ2h0PSIyMjgiIGFsdD0iUkFEIFN0dWRpbyBYRTUiIHNyYz0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vYXJ0aWNsZS8zOTY0MC9pbWFnZXMvMzk2NDAvUkFEU3R1ZGlvWEU1XzE1OXgyMjhfTE0uanBnIiB3aWR0aD0iMTU5IiBpZD0iZG9jaW1hZ2UyIiAvPjwvYT48L3A+DQo8cCBzdHlsZT0idGV4dC1hbGlnbjogY2VudGVyIj48YSBocmVmPSJodHRwOi8vZW1idC5jby9ZMmw3bnEiPjxpbWcgaGVpZ2h0PSIyMjgiIGFsdD0iQysrQnVpbGRlciBYRTUiIHNyYz0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vYXJ0aWNsZS8zOTY0MC9pbWFnZXMvMzk2NDAvQ0J1aWxkZXJYRTVfMTU5eDIyOF9MTS5qcGciIHdpZHRoPSIxNTkiIGlkPSJkb2NpbWFnZTEiIC8+PC9hPjwvcD4NCjwvdGQ+DQo8L3RyPg0KPC90YWJsZT4NCmRkAlRN0NX9/qBqy60T6WCu3soHgyQ=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl29'];
+if (!theForm) {
+    theForm = document.ctl29;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./The Java Communications API  A Working Example - By Rick Proctor_files/WebResource.axd" type="text/javascript"></script>
+
+
+<script src="./The Java Communications API  A Working Example - By Rick Proctor_files/ScriptResource.axd" type="text/javascript"></script>
+<script src="./The Java Communications API  A Working Example - By Rick Proctor_files/ScriptResource(1).axd" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="2173C2F0">
+</div>
+		    
+        	<div class="top">    
+        	            
+            	<div class="print_btn">
+            	    <ul>
+  <li class="submit-translation"><a onmouseover="window.status=&#39;Submit a translation for this article&#39;;return true;" onmouseout="window.status=&#39;&#39;;return true;" href="http://gp.embarcadero.com/articles/translate/31915.aspx"><span>Submit Translation</span></a></li>
+  <li class="print"><a href="http://edn.embarcadero.com/print/31915"><span>Printer-friendly</span></a></li>
+</ul>
+                </div>
+                
+                
+                
+                <div class="breadcrumb">
+                    <ul>
+  <li><a href="http://edn.embarcadero.com/"><span>EDN</span></a></li>
+  <li><span>»</span></li>
+  <li><a href="http://edn.embarcadero.com/jbuilder"><span>JBuilder</span></a></li>
+  <li><span>»</span></li>
+  <li><a href="http://edn.embarcadero.com/jbuilder/language"><span>Language</span></a></li>
+</ul>
+                </div>
+                
+            </div>
+            
+            
+            
+        
+			
+			
+        	<div class="content_wrapper_top">
+        	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        	        <tbody><tr>
+			    
+                          
+                        <td valign="top" width="99%">      
+                <div id="article-div" class="article article-with-rightcol" style="overflow: hidden;">
+				    				    
+				    
+				    <div style="float: left;">
+                      <div id="langfilter" style="display: none;" width="1" nowrap="nowrap">
+                        <table id="langfiltertable" nowrap="nowrap" width="24px" style="display: none; white-space: nowrap;">
+                            <tbody><tr>
+                                <td><a href="javascript:showLanguage('', 'All');">Show All</a></td>
+                            </tr>
+                        </tbody></table>
+                        <img src="./The Java Communications API  A Working Example - By Rick Proctor_files/langfilter.gif" alt="" onclick="showLangFilter();">&nbsp;<span id="langfiltername">[All]</span>
+                        
+                      </div>
+                    </div>
+                    <div id="article-inner-div">
+                    <h1 class="title3">
+                        <span id="expand-collapse-all">
+                            <span id="expand-all"><a href="javascript:expandAll();" title="Expand all article sections"></a></span>
+                            <span id="collapse-all"><a href="javascript:collapseAll();" title="Collapse all article sections"></a></span>
+                        </span>
+                        The Java Communications API: A Working Example - By Rick Proctor
+                    </h1>
+                    
+                    
+                    <p class="author">By: <a href="http://gp.embarcadero.com/authors/edit/3722.aspx">Rick Proctor</a></p>
+                    
+                    
+                    <p class="abstract">Abstract: A How-To on accessing serial ports in the Windows environment using the Java Communications API</p>
+                    
+                    
+                    
+                    
+                    
+				    <div class="article-content">
+				    
+				    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl30', document.getElementById('ctl29'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls([], [], [], 90);
+//]]>
+</script>
+
+<span id="ArticleLabel"><h2>Introduction </h2>
+<p>In this article we’ll discuss using the Java Communications API to access 
+  COM ports in Windows. The following example is taken from a java program that 
+  reads barcodes from an omni-directional scanner. It checks the barcode against 
+  a remote object and, based on the results, sends codes to a PLC (program logic 
+  controller) to fire a diverter arm. </p>
+<h2>The Java Communications API</h2>
+<p>Sun provides an API extension for communicating with parallel and serial ports, 
+  specifically for Solaris and Windows environments. The API can be found at <a href="http://java.sun.com/products/javacomm">http://java.sun.com/products/javacomm</a>. 
+  There are also third party APIs and an open source implementation from <a href="http://www.rxtx.org/">http://www.rxtx.org</a> 
+  that works on several platforms including Linux. </p>
+<p>Using the API, you can create an object for each port (enumeration), open ports, 
+  resolve port contention between Java objects, and perform asynchronous and synchronous 
+  communications.</p>
+<h2>Installing the Java Communications API in a Windows Environment</h2>
+<p>There are some tricks involved in getting the Java Communications API to correctly 
+  interact with the Windows system. Among the items that you download from Sun 
+  are three very important files:</p>
+<ul>
+  <li>comm.jar</li>
+  <li>win32com.dll</li>
+  <li>javax.comm.properties</li>
+</ul>
+<p>For the JVM to recognize the serial ports, proper placement of these files 
+  is important. I’ve read lot’s of messages on the boards, tried various 
+  ways of placing these files in a Windows system, and have found the following 
+  installation methods to be effective:</p>
+<p>comm.jar should be placed in:</p>
+<pre> 
+    %JAVA_HOME%/lib<br>
+    %JAVA_HOME%/jre/lib/ext
+</pre>
+<p>win32com.dll should be placed in:</p>
+<pre>    %JAVA_HOME%/bin<br>
+    %JAVA_HOME%/jre/bin<br>
+    %windir%System32
+</pre>
+<p>javax.comm.properties should be placed in:</p>
+<pre> 
+    %JAVA_HOME%/lib<br>
+    %JAVA_HOME%/jre/lib
+</pre>
+<p>Once you’ve done this, compile and execute one of the sample programs 
+  provided by Sun to ensure that you’ve properly installed everything.</p>
+<h2>Installing the Java Communications API to run in JBuilder</h2>
+<p>Depending on how you’ve configured JBuilder, you may need to install 
+  the win32com.dll and the javax.comm.properties files in their corresponding 
+  directories within the JVM running under JBuilder. For example, I use the JVM 
+  that came with JBuilder 9 as well as an external JVM I downloaded from Sun. 
+  To make JBuilder properly run the api, I placed the winw32comm.dll and the javax.comm.properties 
+  file in their corresponding folders underneath the path C:JBuilder9jdk1.4.</p>
+<p>Next you need to add the comm.jar package to JBuilder. This is relatively simple. 
+  On the JBuilder Menu across the top click on Project</p>
+<blockquote> 
+  <p>Click on Project Properties:</p>
+  <p><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/Properties.jpg" width="429" height="449"></p>
+  <p>Select the Required Libraries tab:</p>
+  <p><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/Properties2.jpg" width="558" height="508"></p>
+  <p>Click the add button:</p>
+  <p><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/Add.jpg" width="288" height="362"></p>
+  <p>Click on the New button and enter a name for your library and select the 
+    path to the Java Communications API and click on the OK button:</p>
+  <p><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/Library.jpg" width="558" height="413"></p>
+  </blockquote>
+<p>Now you’re ready to write your first program using the Java Communications 
+  API.</p>
+<h2>The Program</h2>
+<p>The example we’re going to use reads input from one serial port (COM4) 
+  and sends data to another serial port (COM 5) (note: You do not have to use 
+  COM4 and COM5. Use any available serial ports on your system.). Our program 
+  is named ComContol.</p>
+<h3>ComControl</h3>
+<pre class="sourcecode"><code>
+<b>package</b> serialio;
+
+<font color="#003399"><i>//Sun's serial port driver</i></font>
+<b>import</b> javax.comm.*;
+<b>import</b> java.io.*;
+<b>import</b> java.util.*;
+
+<b>public</b> <b>class</b> ComControl <b>implements</b> Runnable, SerialPortEventListener {
+    <b>static</b> CommPortIdentifier portId1;
+    <b>static</b> CommPortIdentifier portId2;
+
+    InputStream inputStream;
+    OutputStream outputStream;
+    SerialPort serialPort1, serialPort2;
+    Thread readThread;
+    <b>protected</b> String divertCode = <font color="#9933CC">"10"</font>;
+    <b>static</b> String TimeStamp;
+</code></pre>
+<p>To access the comm.jar package we must first import javax.comm.*. We also import 
+  java.io.* to gain access to the InputStream and OutputStream classes. Finally, 
+  we import the java.util.* class to provide access to the EventListener class.</p>
+<p>Notice that ComControl implements the Runnable interface. We implement the 
+  Runnable interface because we want the class to run as a thread. There are two 
+  ways we could do this. First, we could extend the Thread class. In doing so, 
+  we would have access to all of public methods of Thread. Or, we could implement 
+  the Runnable interface. It provides a single abstract method called run(). Using 
+  one or the other really depends on what we’re doing. In this example we’re 
+  overriding the run() method and not any other methods of Thread. A good rule 
+  of thumb is to implement Runnable when overriding the only run() method, extend 
+  Thread to access its other methods. </p>
+<p class="TechNote">Note: We didn’t need to import a package for the Thread class because 
+  it is part of the java.lang package.</p>
+<p>ComControl also implements the SerialPortEventListener interface. Like other 
+  event listeners, the SerialPortEventListener interface extends the EventListener 
+  interface (defined in the java.util package). Without getting into too much 
+  detail, listeners use Java’s delegation model where events are treated 
+  as objects. The delegation model allows a program to delegate event handling 
+  to a listener by registering the listener at runtime. Whenever an event occurs 
+  for a particular listener, it is dispatched to all of the listeners registered 
+  for it. The event is dispatched by calling a method of the corresponding event 
+  interface.</p>
+<p>We now need to set up some variables. Since we’re using two serial ports, 
+  we define the objects portId1 and portId2 with a datatype of CommPortIdentifier. 
+  CommPortIdentifier is the main class that controls access to serial ports. CommPortIdentifier 
+  is used to negotiate with the driver to discover which communication ports are 
+  available and then select a port for opening. It uses methods in other classes 
+  like CommPort and SerialPort to communicate to the port.</p>
+<p>We must also set up an InputStream (inputStream) to read the data coming through 
+  the serial port and an OutputStream (outputStream) to send data to the serial 
+  port. The InputStream class is part of the java.io package.</p>
+<p>Next, we create some SerialPort objects: serialPort1 and SerialPort2. SerialPort 
+  is an abstract class that defines the low-level interface to a RS-232 device 
+  such as a serial port. It defines the minimum functionality needed to communicate 
+  with a serial port.</p>
+<p>We define a Thread (readThread) because earlier we implemented the Runnable 
+  interface. As a result, we’re going to instantiate a Thread object after 
+  we’ve taken care of some housekeeping items.</p>
+<h3>main() method</h3>
+<pre class="sourcecode"><code>
+    <b>public</b> <b>static</b> <b>void</b> main(String[] args) {
+
+        <b>try</b> {
+          portId1 = CommPortIdentifier.getPortIdentifier(<font color="#9933CC">"COM4"</font>);
+          portId2 = CommPortIdentifier.getPortIdentifier(<font color="#9933CC">"COM5"</font>);
+          ComControl reader = <b>new</b> ComControl();
+      }
+
+    <b>catch</b>
+      (Exception e) {
+      TimeStamp = <b>new</b> java.util.Date().toString();
+      System.out.println(TimeStamp + <font color="#9933CC">": COM4 "</font> + portId1);
+      System.out.println(TimeStamp + <font color="#9933CC">": COM5 "</font> + portId2);
+      System.out.println(TimeStamp + <font color="#9933CC">": msg1 - "</font> + e);
+     }
+    };
+</code></pre>
+<p>Let’s now take a look at the main() method. We start by putting everything 
+  in a try block. We do this because it is possible that the serial ports we’re 
+  looking for do not exist or are busy. Inside our try block we attempt to get 
+  a Handle for the serial ports (portId1 and portId2) by executing the ComPortIdentifier.getPortIdentifer() 
+  method. This method returns a ComPortIdentifier object and throws a NoSuchPortException 
+  if a particular port does not exist. The last thing we do in the try block is 
+  instantiate ComControl using a constructor that we will talk about in the following 
+  section.</p>
+<p>After the try block, we have a catch block. In this example, we’re catching 
+  any Exception that may occur. We could just have easily caught just the NoSuchPortException. 
+  The first thing we do is load the current date and time into a string called 
+  TimeStamp. While it’s not necessary to do this, it is useful if for logging 
+  to an external file.</p>
+<p>Using System.out.println(), we display the port identifier objects for COM4 
+  and COM5. We want to see if either of the port identifier objects are null…a 
+  null value indicates that the program could not find the port. Finally, we display 
+  the exception itself.</p>
+<h3>ComControl() Constructor</h3>
+<pre class="sourcecode"><code>
+    <b>public</b> ComControl() {
+
+        <b>try</b> {
+            TimeStamp = <b>new</b> java.util.Date().toString();
+            serialPort1 = (SerialPort) portId1.open(<font color="#9933CC">"ComControl"</font>, 2000);
+            System.out.println(TimeStamp + <font color="#9933CC">": "</font> + portId1.getName() + <font color="#9933CC">" opened for scanner input"</font>);
+            serialPort2 = (SerialPort) portId2.open(<font color="#9933CC">"ComControl"</font>, 2000);
+            System.out.println(TimeStamp + <font color="#9933CC">": "</font> + portId2.getName() + <font color="#9933CC">" opened for diverter output"</font>);
+
+        } <b>catch</b> (PortInUseException e) {}
+        <b>try</b> {
+            inputStream = serialPort1.getInputStream();
+        } <b>catch</b> (IOException e) {}
+        <b>try</b> {
+            serialPort1.addEventListener(<b>this</b>);
+        } <b>catch</b> (TooManyListenersException e) {}
+        serialPort1.notifyOnDataAvailable(<b>true</b>);
+        <b>try</b> {
+
+            serialPort1.setSerialPortParams(9600,
+                SerialPort.DATABITS_8,
+                SerialPort.STOPBITS_1,
+                SerialPort.PARITY_NONE);
+
+            serialPort1.setDTR(<b>false</b>);
+            serialPort1.setRTS(<b>false</b>);
+
+            serialPort2.setSerialPortParams(9600,
+                SerialPort.DATABITS_7,
+                SerialPort.STOPBITS_1,
+                SerialPort.PARITY_EVEN);
+
+        } <b>catch</b> (UnsupportedCommOperationException e) {}
+
+        readThread = <b>new</b> Thread(<b>this</b>);
+        readThread.start();
+    }
+</code></pre>
+<p>We start the ComControl() constructor with a try block. In this case, we are 
+  instantiating SerialPort objects (serialPort1 and serialPort2) by executing 
+  portId1’s and portId2’s open() method. Recall portId1 and portId2 
+  are ComPortIdentifier objects and the open() method comes from ComPortIdentifier. 
+  It throws the PortInUseException. In our example, we’ll ignore this exception 
+  and go on. In the real world you would most likely want to handle this exception. 
+</p>
+<p>The open() method we’re using in this example has two parameters. The 
+  first parameter is a string containing the name of the application opening or 
+  owning the port. This parameter is useful in resolving contention issues between 
+  programs. The next parameter is an int containing the timeout in milliseconds 
+  that the open() method will wait for a port to open. </p>
+<p>We have added a couple of System.out.println() methods that use our TimeStamp 
+  string and a ComPortIdentifier.getName() method (portId1.getName() and portId2.getName() 
+  where portId1 and portId2 are ComPortIdentifier objects). The getName() method 
+  returns the system assigned name of the serial port. In our case this should 
+  be COM4 and COM5. </p>
+<p>In order to check for incoming data on the serialPort1 object we just created, 
+  we need to call its .getInputStream() method. We’ll see the results of 
+  this event later. The .getInputStream() method throws an IOException. We want 
+  to ignore this because often the serial port will be idle.</p>
+<p>After we’ve opened the ports, we need to register an EventListener for 
+  COM4. Again we create a try block and invoke the addEventListener() method within 
+  it. The exception for the addEventListener is TooManyListenersExeception. In 
+  this case, that’s not an issue so we’ll ignore the exception. </p>
+<p>Next we define the properties of our serial ports using the setSerialPortParams() 
+  method. This method allows us to set the flow control, data bits, parity, and 
+  stop bits. We are concerned only with the Data bits, stop bits, and parity. 
+  The device that we’re using in this case does not have the Data Terminal 
+  Ready (DTR) wire pinned out so we’ll use the serialPort1.setDTR() method 
+  to set DTR to false. Our input device doesn’t support Request To Send 
+  (RTS) handshaking either, we’ll use the serialPort1.setRTS() method to 
+  set RTS to false.</p>
+<p class="TechNote">Note: The settings I use in this example apply to the serial 
+  devices I’m connecting to. Your serial devices may (probably) have completely 
+  different settings. Check with your device manual for the proper settings.</p>
+<p>The last thing we want to do is to create a Thread. This We define a Thread 
+  (readThread) and execute its start() method. </p>
+<h3>run() method</h3>
+<pre class="sourcecode"><code><b>public</b> <b>void</b> run() {
+        <b>try</b> {
+            Thread.sleep(100);
+        } <b>catch</b> (InterruptedException e) {}
+    }
+</code></pre>
+<p>As noted earlier, we implemented the Runnable interface. Now, we override the 
+  run() method of that interface. Reviewing the code above you’ll see that 
+  we’re calling the Thread.sleep() method within a try…catch block. 
+  The sleep() method is actually an overloaded method within the Thread class. 
+  It can be passed either a long that represents the time in milliseconds that 
+  you want the thread to cease execution, or it can be passed a long and an int 
+  that represents the time in milliseconds plus the time in nanoseconds that a 
+  thread will sleep. We want the thread to sleep for 100 milliseconds.</p>
+<h3><br>
+  serialEvent() method</h3>
+<p>Now that we’ve built the code to create and start a SerialPortEventListener 
+  object (ComControl), we need to do something when events occur. Thus, we override 
+  the SerialPortEventListener interface’s abstract serialEvent() method. 
+  This method is executed when a serial event occurs. It receives a SerialPortEvent 
+  object. </p>
+<p>Let’s take a look at the code.</p>
+<pre class="sourcecode"><code>
+    <b>public</b> <b>void</b> serialEvent(SerialPortEvent event) {
+        <b>switch</b>(event.getEventType()) {
+        <b>case</b> SerialPortEvent.BI:
+        <b>case</b> SerialPortEvent.OE:
+        <b>case</b> SerialPortEvent.FE:
+        <b>case</b> SerialPortEvent.PE:
+        <b>case</b> SerialPortEvent.CD:
+        <b>case</b> SerialPortEvent.CTS:
+        <b>case</b> SerialPortEvent.DSR:
+        <b>case</b> SerialPortEvent.RI:
+        <b>case</b> SerialPortEvent.OUTPUT_BUFFER_EMPTY:
+            <b>break</b>;
+        <b>case</b> SerialPortEvent.DATA_AVAILABLE:
+            StringBuffer readBuffer = <b>new</b> StringBuffer();
+            <b>int</b> c;
+            <b>try</b> {
+                 <b>while</b> ((c=inputStream.read()) != 10){
+                   <b>if</b>(c!=13)  readBuffer.append((<b>char</b>) c);
+                 }
+                 String scannedInput = readBuffer.toString();
+                 TimeStamp = <b>new</b> java.util.Date().toString();
+                 System.out.println(TimeStamp + <font color="#9933CC">": scanned input received:"</font> + scannedInput);
+                 inputStream.close();
+                 <b>if</b>(scannedInput.substring(0,1).equals(<font color="#9933CC">"F"</font>)){
+                   outputStream = serialPort1.getOutputStream();
+                   outputStream.write(divertCode.getBytes());
+                   System.out.println(TimeStamp + <font color="#9933CC">": diverter fired"</font>);
+                   outputStream.close();
+                   } <b>else</b> {
+                   System.out.println(TimeStamp + <font color="#9933CC">": diverter not diverted"</font>);
+                   }
+            } <b>catch</b> (IOException e) {}
+
+            <b>break</b>;
+        }
+    }
+</code></pre>
+<p>Looking at the code you’ll see a set of case statements. We test these 
+  case statements by using event.getEventType() method; where event is the object 
+  that was passed to the serialEvent() method. The getEventType() method returns 
+  an int. </p>
+<p>Although I’ve defined several cases here, primarily to show you everything 
+  you can check for in a serial event, in this example you and I are only interested 
+  in 2 events: SerialPortEvent.OUTPUT_BUFFER_EMPTY and SerialPortEvent.DATA_AVAILABLE. 
+  In the case of OUTPUT_BUFFER_EMPTY, we want to break out of the serialEvent 
+  method altogether because we’ve finished receiving data. In the case of 
+  DATA_AVAILABLE, we want examine the data coming from our serialPort1 object 
+  and, if it’s the data we’re looking for, send data to our serialPort2 
+  object.</p>
+<p>If you refer back to the ComControl() constructor, you’ll see that we 
+  attempted to read bytes into our static inputStream object using the serialPort1.getInputStream() 
+  method. In the DATA_AVAILABLE case we’ll interpret the bytes coming from 
+  the serialPort1 object. We’ve created a while block that reads each byte 
+  coming in from serialPort1 and tests to see whether the byte is an ANSI character 
+  10 (linefeed) or an ANSI character 13 (carriage control). The reason we do this 
+  is because the input device is sending a carriage control/linefeed at the end 
+  of each transmission. If the inputStream byte is anything other than a carriage 
+  control/linefeed we want to store in our readBuffer object. </p>
+<p>As soon as a carriage return/linefeed combination is encountered we break out 
+  of the while block. Although we can deal with a Stringbuffer, depending on the 
+  situation my personal preference is to use the toString() method in order to 
+  create a String object. We will create String object is called scannedInput. 
+  And, because I like to see what’s going on during program execution, we’ll 
+  write the info using System.out.println().</p>
+<p>If the first character of the scannedInput string is an “F” then 
+  we want to send a signal to the serialPort2 object. Serial port objects can 
+  be written to using OutputStream objects. First, we obtain serialPort2’s 
+  OutputStream by calling the getOutptStream() method. Previously we created a 
+  String called divertCode that contains “10”. In our example, a divertCode 
+  of “10” tells a Program Logic Controller (PLC) to fire a particular 
+  diverter. Since we want to write this string to our serialPort2 object, we use 
+  the .write()
+  method of the OutputStream object outputStream. The write() method is looking 
+  for an array of byte datatypes, so we have to convert the divertCode string 
+  to a byte array using the .getbBytes() method. After we’ve written to 
+  serialPort2, we log the information and break out of the serialEvent method 
+  and wait for the next serialEvent to occur.</p>
+<h2>Summary</h2>
+<p>While java is generally a platform independent language, there are times that 
+  we need to perform platform specific functions such as RS-232 communications. 
+  The Java Communications API allows us to do this in straightforward manner. 
+  In this article, we focused on reading and writing serial i/o. Although we covered 
+  the basics, I believe you’ll find this information useful as you build 
+  your own RS-232 applications. <br>
+</p>
+<hr>
+<h3>About the Author</h3>
+<p>Rick Proctor has over 20 years experience in the IT industry.  Since 2001 Rick has 
+  been Vice President of Information Technology for Thomas Nelson, Inc. Rick can be reached at <a href="mailto:tech_dude@yahoo.com">tech_dude@yahoo.com</a>. Read his blog at <a href="http://rickproctor.blogspot.com/">rickproctor.blogspot.com</a>.</p>
+<p>The source code for ComControl.java can be found at <a href="http://codecentral.borland.com/codecentral/ccWeb.exe/listing?id=21304">CodeCentral</a>.</p></span>
+
+				    
+				    </div>
+				    </div>
+				    
+				    <div class="sidebar-dotsilver">
+<div class="module-container article-comments-container">
+<div id="secondary-nav-wrapper" class="module article-comments">
+
+<div>
+<div class="comments-inner">
+<table cellspacing="0" cellpadding="0" width="100%" border="0" class="contentpadding">
+  <tbody><tr>
+	<td valign="middle" align="left" class="horizontal_dotted"><div></div></td>
+  </tr>
+</tbody></table>
+<h1><span id="commentsspan" class="sectioncollapse" title="Collapse section"><a href="javascript:hideShowElement('commentsspan', 'commentsdiv')">&nbsp;&nbsp;</a></span><a href="javascript:hideShowElement('commentsspan', 'commentsdiv')">Latest Comments</a> &nbsp;<a id="ctl33_hlViewAllComments" class="view-all" href="http://threads.embarcadero.com/threads/threads.exe/thread?&sysid=1&contentid=31915&title=The%20Java%20Communications%20API:%20A%20Working%20Example%20-%20By%20Rick%20Proctor"><span>View All</span></a>&nbsp;<a id="ctl33_hlAddNewComment" class="add-new" href="http://threads.embarcadero.com/threads/threads.exe/add?&sysid=1&contentid=31915&title=The%20Java%20Communications%20API:%20A%20Working%20Example%20-%20By%20Rick%20Proctor"><span>Add New</span></a>&nbsp;<a onmouseover="window.status=&#39;RSS Feed&#39;;return true;" onmouseout="window.status=&#39;&#39;;return true;" class="rssbtn" href="http://edn.embarcadero.com/article/31915/rss"><span>RSS</span></a>&nbsp;<a onmouseover="window.status=&#39;ATOM Feed&#39;;return true;" onmouseout="window.status=&#39;&#39;;return true;" class="atombtn" href="http://edn.embarcadero.com/article/31915/atom"><span>ATOM</span></a></h1>
+<div class="section" header="Comments" id="commentsdiv"><em><font size="-2">Move mouse over comment to see the full text<br></font>
+</em>
+  <p>Could not retrieve comments. Please try again later.</p>
+</div>
+<div class="comments-footer"><div><div></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                </div>
+                        </td>
+                
+                
+                        <td class="colright-cell" valign="top" width="230">
+                <div class="colright" style="width:230px;">                   
+                    <div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container article-rating-container">
+<div id="secondary-nav-wrapper" class="module article-rating">
+<table border="0" cellspacing="0" cellpadding="0"><tbody><tr class="top"><td><table border="0" cellspacing="0" class="toptable"><tbody><tr><td><span id="Module5" class="sectionexpand" title="Expand section"><a href="javascript:hideShowElement('Module5', 'ModuleContent5')">&nbsp;&nbsp;&nbsp;</a></span></td><td><h2><a href="javascript:hideShowElement('Module5', 'ModuleContent5')">Rating</a></h2></td><td width="100%" style="width: 100%;">	<ul class="rating"> 
+	  <li class="r-existing" style="WIDTH: 87px"><a>&nbsp;</a></li> 
+	  <li class="r1"><a href="http://edn.embarcadero.com/article/31915/rate/1" title="rate this as bad">&nbsp;</a></li> 
+	  <li class="r2"><a href="http://edn.embarcadero.com/article/31915/rate/2" title="rate this as poor">&nbsp;</a></li> 
+	  <li class="r3"><a href="http://edn.embarcadero.com/article/31915/rate/3" title="rate this as fair">&nbsp;</a></li> 
+	  <li class="r4"><a href="http://edn.embarcadero.com/article/31915/rate/4" title="rate this as good">&nbsp;</a></li> 
+	  <li class="r5"><a href="http://edn.embarcadero.com/article/31915/rate/5" title="rate this as excellent">&nbsp;</a></li> 
+	</ul> </td></tr></tbody></table></td></tr></tbody></table><div id="ModuleContent5" style="display: none;">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+	<td colspan="9" align="center" valign="middle"><small><span id="ctl39_lblRatingStatus"></span></small></td>
+  </tr>
+  <tr id="ctl39_avgRow">
+	<td><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/spacer.gif" alt="" border="0" height="20" width="6"></td>
+	<td colspan="8">Average rating:
+        <span id="ctl39_lblAverageRating">4.85</span></td>
+</tr>
+
+  <tr>
+	<td>&nbsp;</td>
+	<td>Votes:</td>
+	<td>&nbsp;</td>
+	<td align="center"><span id="ctl39_lblRatings1">0</span></td>
+	<td align="center"><span id="ctl39_lblRatings2">0</span></td>
+	<td align="center"><span id="ctl39_lblRatings3">1</span></td>
+	<td align="center"><span id="ctl39_lblRatings4">4</span></td>
+	<td align="center"><span id="ctl39_lblRatings5">34</span></td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+	<td><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/spacer.gif" alt="" border="0" height="20" width="6"></td>
+	<td>&nbsp;</td>
+	<td><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/spacer.gif" alt="" border="0" height="20" width="6"></td>
+	<td align="center" width="22"><img id="ctl39_imgBar1" src="./The Java Communications API  A Working Example - By Rick Proctor_files/vbar.jpg" alt="0 rated this 1" style="height:50px;width:22px;border-width:0px;"></td>
+	<td align="center" width="22"><img id="ctl39_imgBar2" src="./The Java Communications API  A Working Example - By Rick Proctor_files/vbar.jpg" alt="0 rated this 2" style="height:50px;width:22px;border-width:0px;"></td>
+	<td align="center" width="22"><img id="ctl39_imgBar3" src="./The Java Communications API  A Working Example - By Rick Proctor_files/vbar(1).jpg" alt="1 rated this 3" style="height:50px;width:22px;border-width:0px;"></td>
+	<td align="center" width="22"><img id="ctl39_imgBar4" src="./The Java Communications API  A Working Example - By Rick Proctor_files/vbar(2).jpg" alt="4 rated this 4" style="height:50px;width:22px;border-width:0px;"></td>
+	<td align="center" width="22"><img id="ctl39_imgBar5" src="./The Java Communications API  A Working Example - By Rick Proctor_files/vbar(3).jpg" alt="34 rated this 5" style="height:50px;width:22px;border-width:0px;"></td>
+	<td><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/spacer.gif" alt="" border="0" height="20" width="6"></td>
+  </tr>
+  <tr>
+	<td>&nbsp;</td>
+	<td>Rating:</td>
+	<td>&nbsp;</td>
+	<td align="center">1</td>
+	<td align="center">2</td>
+	<td align="center">3</td>
+	<td align="center">4</td>
+	<td align="center">5</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+	<td colspan="9" align="center" valign="middle"><small>1=Poor, 5=Excellent</small></td>
+  </tr>
+</tbody></table>
+</div></div>
+</div>
+</div>
+<br style="clear: both">
+<div class="sidebar-dotsilver">
+<div class="module-container product-pricing-container">
+<div id="secondary-nav-wrapper" class="module product-pricing">
+<table width="100%">
+<tbody><tr>
+<td valign="top" width="100%"><div class="button button-image button-dl"><a href="https://downloads.embarcadero.com/free/jbuilder" title="Download a free trial">Download Trial</a></div>
+  <div style="height: 4px;"></div>
+
+<div class="button button-image button-cart"><a href="http://edn.embarcadero.com/buy?link=5,97" title="Purchase a product right now">Buy Now</a></div>
+</td>
+</tr>
+<tr>
+<td valign="top" width="100%"><p style="text-align: center"><a href="http://embt.co/RADDownload"><img height="228" alt="RAD Studio XE5" src="./The Java Communications API  A Working Example - By Rick Proctor_files/RADStudioXE5_159x228_LM.jpg" width="159" id="docimage2"></a></p>
+<p style="text-align: center"><a href="http://embt.co/Y2l7nq"><img height="228" alt="C++Builder XE5" src="./The Java Communications API  A Working Example - By Rick Proctor_files/CBuilderXE5_159x228_LM.jpg" width="159" id="docimage1"></a></p>
+</td>
+</tr>
+</tbody></table>
+
+</div>
+</div>
+</div>
+
+                    					
+                </div>
+                        </td>
+                
+                    </tr>
+                </tbody></table>
+                
+                <div class="clearblock"><img src="./The Java Communications API  A Working Example - By Rick Proctor_files/spacer(1).gif"></div>
+            	
+                
+                <p><small>Server Response from: ETNASC02</small></p>
+                
+                
+            </div>
+
+          
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.initialize();
+//]]>
+</script>
+</form>  
+        </div>
+		
+        </div>
+	  </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer2">
+    <div class="footer_center">
+    
+    <div style="float:left;">
+    	Copyright© 1994 - 2013 Embarcadero Technologies, Inc. All rights reserved.
+        &nbsp;&nbsp;
+	  <a href="http://edn.embarcadero.com/sitemap" class="logintxt">Site Map</a>
+	</div>
+	</div>
+  </div>
+</div>
+</td></tr></tbody></table><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; top: -9999px; z-index: 100000;"><iframe id="_atssh17" title="AddThis utility frame" src="./The Java Communications API  A Working Example - By Rick Proctor_files/sh186.html" style="height: 1px; width: 1px; position: absolute; top: 0px; z-index: 100000; border: 0px; left: 0px;"></iframe></div><script type="text/javascript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/core181.js"></script>
+
+
+
+<!-- START SUB NAV -->
+        <div class="subnav_wrapper" id="subnav_wrapper" style="top: 108px;">
+            <div id="Communities_subnav" class="subnav" style="left: 175.5px; width: 385px;">
+                <div class="col">
+					<h1>Developer Tools</h1>
+					<div class="col">
+						<a href="http://edn.embarcadero.com/blackfish_sql" style="border-top-style:solid;">Blackfish SQL</a>
+						<a href="http://edn.embarcadero.com/c_builder">C++Builder</a>
+						<a href="http://edn.embarcadero.com/delphi">Delphi</a>
+						<a href="http://edn.embarcadero.com/firemonkey">FireMonkey</a>
+						<a href="http://edn.embarcadero.com/prism">Prism</a>
+						<a href="http://edn.embarcadero.com/interbase">InterBase</a>
+						<a href="http://edn.embarcadero.com/jbuilder">JBuilder</a>
+						<a href="http://edn.embarcadero.com/j_optimizer">J Optimizer</a>
+						<a href="http://edn.embarcadero.com/html5builder">HTML5 Builder</a>
+						<a href="http://edn.embarcadero.com/3rdrail">3rdRail &amp; TurboRuby</a>
+					</div>
+					<div class="clearblock"></div>
+				</div>
+				<div class="col">
+				<h1>Database Tools</h1>
+					<a href="http://edn.embarcadero.com/change_manager" style="border-top-style:solid;">Change Manager</a>
+					<a href="http://edn.embarcadero.com/dbartisan">DBArtisan</a>
+					<a href="http://edn.embarcadero.com/db_optimizer">DB Optimizer</a>
+					<a href="http://edn.embarcadero.com/er_studio">ER/Studio</a>
+					<a href="http://edn.embarcadero.com/performance_center">Performance Center</a>
+					<a href="http://edn.embarcadero.com/rapid_sql">Rapid SQL</a>
+				</div>
+            </div>
+            <div id="Articles_subnav" class="subnav" style="left: 307.5px; width: 190px;">
+               <div class="col">
+					<a href="http://edn.embarcadero.com/articles" style="border-top-style:solid;">Technical Articles</a>
+					<a href="http://edn.embarcadero.com/tutorials">Tutorials</a>
+					<a href="http://edn.embarcadero.com/whitepapers">White Papers</a>
+					<a href="http://edn.embarcadero.com/press">Press Releases</a>
+					<a href="http://edn.embarcadero.com/newsletters">Newsletters</a>
+				</div>
+            </div>
+            <!--
+            <div id="Blogs_subnav" class="subnav">
+            </div>
+            -->
+            <div id="Resources_subnav" class="subnav" style="left: 487.5px; width: 190px;">
+               <div class="col">
+                    <a href="http://gp.embarcadero.com/" title="Submit your own articles for publication and (optionally) get paid.">Add Content (GetPublished)</a>
+					<a href="http://edn.embarcadero.com/audio" title="Listen to Embarcadero&#39;s developers and management." style="border-top-style:solid;">Audio</a>
+                    <a href="http://edn.embarcadero.com/tv" title="View product demonstrations &amp; listen to Embarcadero&#39;s developers and management.">Audio &amp; Video</a>
+                    <a href="http://edn.embarcadero.com/video" title="Watch presentations and product demonstrations.">Video</a>
+                    <a href="http://qc.embarcadero.com/" title="Submit bugs and feature requests. Also known as QualityCentral.">Bugs &amp; Suggestions (QualityCentral)</a>
+                    <a href="https://forums.embarcadero.com/" title="Discussion Forums">Discussion Forums</a>
+                    <a href="http://cc.embarcadero.com/" title="Examples, code, etc.. Also known as CodeCentral.">Examples (CodeCentral)</a>
+                    <a href="http://edn.embarcadero.com/tag" title="Tags">Tags</a>
+                    <a href="http://tp.embarcadero.com/" title="Browse the Embarcadero Technology Partners database.">Technology Partners</a>
+                    <!--
+                    <a href="http://chat.embarcadero.com" >Chats</a>
+                    <a href="http://edn.embarcadero.com/article/37476" title="Embarcadero powered-by logos">Logos</a>
+                    <a href="http://conferences.embarcadero.com" title="Browse the rich resources of Embarcadero's Developer Conference Proceedings." >Conference Proceedings</a>
+                    <a href="http://edn.embarcadero.com/museum" title="Download antique versions of Embarcadero software." >Museum</a>
+                    <a href="http://support.embarcadero.com/forums/directory" >Discussion Forums</a>
+                    -->
+				</div>
+				
+            </div>
+            <div id="Downloads_subnav" class="subnav" style="left: 598.5px; width: 190px;">
+               <div class="col">
+                    <a href="http://www.embarcadero.com/downloads" style="border-top-style:solid;">Downloads</a>
+					<a href="https://downloads.embarcadero.com/free">Free Trials</a>
+					<a href="http://cc.embarcadero.com/myreg">Registered User Downloads</a>
+					<a href="http://www.embarcadero.com/products/beta-programs">Beta Programs</a>
+				</div>
+            </div>
+            <div id="Help_subnav" class="subnav" style="left: 717.5px; width: 190px;">
+               <div class="col">
+                    <a href="http://edn.embarcadero.com/help/gp">Add Content (GetPublished)</a>
+                    <a href="http://edn.embarcadero.com/help/articles" style="border-top-style:solid;">Articles</a>
+                    <a href="http://edn.embarcadero.com/help/blogs">Blogs</a>
+                    <a href="http://edn.embarcadero.com/help/qc">Bugs &amp; Suggestions (QualityCentral)</a>
+                    <a href="http://edn.embarcadero.com/help/forums">Discussion Forums</a>
+                    <a href="http://edn.embarcadero.com/help/cc">Examples (CodeCentral)</a>
+                    <a href="http://edn.embarcadero.com/help/members">Member Services</a>
+                    <a href="http://edn.embarcadero.com/help/about">About</a>
+				</div>
+            </div>
+        </div>
+        <!-- END SUB NAV -->
+
+
+    <script language="JavaScript" type="text/javascript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/wz_tooltip.js"></script>
+
+
+
+<script language="JavaScript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/ga(1).js" type="text/javascript"></script>
+
+
+<script language="JavaScript" type="text/javascript"><!--
+showExpandCollapseAll();
+// -->
+    </script>
+  
+
+<script language="JavaScript" type="text/javascript">
+	var SiteTrackingID = "dcsnbidjg10000ws3np996qah_8d3j";
+</script>
+<script language="JavaScript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/webtrends.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var _tag = new WebTrends();
+	_tag.dcsGetId();
+</script><script type="text/javascript" src="./The Java Communications API  A Working Example - By Rick Proctor_files/wtid.js"></script>
+<script type="text/javascript">
+	_tag.dcsCollect();
+</script>
+<noscript>
+&lt;div&gt;&lt;img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="http://206.204.120.7/dcsnbidjg10000ws3np996qah_8d3j/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No&amp;amp;WT.tv=8.6.1"/&gt;&lt;/div&gt;
+</noscript>
+
+
+
+<div id="left-module-dimmer" class="module-highlight module-left-border"></div><div id="right-module-dimmer" class="module-highlight module-right-border"></div><div id="top-module-dimmer" class="module-highlight module-top-border"></div><div id="bottom-module-dimmer" class="module-highlight module-bottom-border"></div><iframe src="" width="1" height="1" style="border: none; position: absolute; top: -100px; left: -100px;"></iframe></body></html>

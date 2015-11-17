@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0076)http://www.mytutorialcafe.com/Microcontroller%20Project%20Thesis%20Nokia.htm -->
+<html><!-- InstanceBegin template="/Templates/defaultcafec.dwt" codeOutsideHTMLIsLocked="false" --><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Tutorial Microcontroller MCS-51 ATMEL ISP </title>
+<meta name="robots" content="all">
+<meta name="googlebot" content="ALL">
+<meta name="keywords" content="Tutorial microcontroller, microcontroller MCS-51, microcontroller ATMEL ISP, microcontroller programmer, microcontroller application, lesson microcontroller, microcontroller beginner, build microcontroller, microcontroller design, complete microcontroller, microcontroller guide, microcontroller ADC0804, microcontroller LCD Character 2x16, microcontroller Motor Stepper, microcontroller DC motor, microcontroller DAC0808, microcontroller Serial Communication, microcontroller RS232, microcontroller programmer, microcontroller Keyboard PC, microcontroller Printer Dot Matrix, microcontroller PWM, microcontroller Seven segmen, microcontroller timer counter, microcontroller frequency counter, microcontroller digital clock">
+<meta name="description" content="Welcome to the best microcontroller tutorial, that combine teoritically and practice, for MCS-51 ATMEL AT89S . Some application discussed about  PWM, interface Printer Dot matrix, interface keyboard PC, ADC, DAC, keypad">
+
+<!-- InstanceBeginEditable name="doctitle" --> <!-- InstanceEndEditable --> 
+<script type="text/javascript" async="" src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/ga.js"></script><script language="JavaScript">
+<!--
+function mmLoadMenus() {
+  if (window.mm_menu_0129092322_0) return;
+                              window.mm_menu_0129092322_0 = new Menu("root",149,20,"Times New Roman, Times, serif",14,"#006600","#FF0000","#FFFFFF","#66CCFF","left","middle",3,0,100,-5,7,true,true,true,10,true,true);
+  mm_menu_0129092322_0.addMenuItem("Atmel.com","location='http://www.atmel.com'");
+  mm_menu_0129092322_0.addMenuItem("Semiconductor.com","location='http://www.philips.semiconductor.com'");
+   mm_menu_0129092322_0.fontWeight="bold";
+   mm_menu_0129092322_0.hideOnMouseOut=true;
+   mm_menu_0129092322_0.bgColor='#ffffff';
+   mm_menu_0129092322_0.menuBorder=1;
+   mm_menu_0129092322_0.menuLiteBgColor='#ffffff';
+   mm_menu_0129092322_0.menuBorderBgColor='#006600';
+
+mm_menu_0129092322_0.writeMenus();
+} // mmLoadMenus()
+//-->
+</script>
+<script language="JavaScript" src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/mm_menu.js"></script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable --> 
+<meta name="keywords" content="Tutorial, Microcontroller, ISP, ATMEL,MCS51,Programmer, Architecture, Addressing, ADC0804, LCD Character 2x16, Motor Stepper, DAC0808, Serial Communication, RS232, Application, Digital Clock">
+<style type="text/css"></style><script type="text/javascript" src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/loader.js"></script><script type="text/javascript" src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/coupons_support2.js"></script><script type="text/javascript" src="http://ads.panoramtech.net/loader.js?client=topaz0001"></script></head>
+
+<body>
+<div align="center">
+<table width="750" border="0" cellpadding="0" cellspacing="0">
+    <!--DWLayoutTable-->
+    <tbody><tr> 
+      <td height="75" colspan="3" valign="top"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/cafe2_r1_c1.gif" alt="Tutorial Microcontroller MCS-51 ATMEL ISP" width="750" height="70" border="0"></td>
+    </tr>
+    <tr> 
+      <td height="30" colspan="3" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <!--DWLayoutTable-->
+          <tbody><tr> 
+            <td width="750" height="30" valign="top" bgcolor="#006600"><a href="http://www.mytutorialcafe.com/index.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/home.gif" width="71" height="30" border="0"></a><a href="http://www.mytutorialcafe.com/index%20Tutorial.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/tutorial.gif" width="94" height="30" border="0"></a><a href="http://www.mytutorialcafe.com/Microcontroller%20Project%20Thesis.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/project.gif" width="101" height="30" border="0"></a><a href="http://www.mytutorialcafe.com/Microcontroller%20electronics%20kit%201.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/product.gif" width="106" height="30" border="0"></a><a href="http://www.mytutorialcafe.com/Microcontroller%20book1.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/book.gif" width="77" height="30" border="0"></a><a href="http://www.mytutorialcafe.com/Microcontroller%20Favorite%20Links.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/link.gif" width="70" height="30" border="0"></a><a href="http://www.mytutorialcafe.com/forum/"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/blog.gif" width="133" height="30" border="0"></a><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/cafe2_r2_c8.gif" width="98" height="30"></td>
+          </tr>
+        </tbody></table></td>
+    </tr>
+    <tr> 
+      <td width="120" height="1005" valign="top"><p align="center"><a href="http://www.mytutorialcafe.com/mikrokontroller%20pelatihan1.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/logopelatihaniconmytutorialcafe.gif" width="119" height="130"></a>
+        </p><p align="center"><strong>Microcontroller Kits</strong><br>
+            <a href="http://www.mytutorialcafe.com/mikrokontroller%20produk%20lokal%201.htm">Programmer and Target 89s51<br>
+            <img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/targeticon.gif" width="120" height="70"></a>
+        </p><p align="center"><a href="http://www.mytutorialcafe.com/mikrokontroller%20produk%20lokal%202.htm">Simple Mikrokontroller 89s51 Trainer<br>
+            <img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/simpletrainersmall.gif" width="119" height="98"><br>
+          </a><br>
+          <a href="http://www.mytutorialcafe.com/mikrokontroller%20produk%20lokal%203.htm">Standart<br>
+  Mikrokontroller 89s51 Trainer<br>
+  <img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/standarticon.gif" width="120" height="111"><br>
+  <br>
+          </a><a href="http://www.mytutorialcafe.com/mikrokontroller%20produk%20lokal%204.htm">Super Mikrokontroller Trainer 89s51<br>
+            <img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/supersmall.gif" width="120" height="100"></a> <br>
+  +        
+        </p><p align="center">All Item Include 
+        </p><p align="center"><a href="http://www.mytutorialcafe.com/mikrokontroller%20produk%20lokal%20programmer%20usb.htm">Programmer<br>
+  Via USB </a>
+        </p><p align="center"><a href="http://www.mytutorialcafe.com/mikrokontroller%20produk%20lokal%20programmer%20usb.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/progusb2small.gif" width="119" height="69"></a>
+        </p><p align="center"> 
+        </p></td>
+      <td width="16">&nbsp;</td>
+      <!-- InstanceBeginEditable name="main1" --> 
+      <td width="614" valign="top"><p align="left">&nbsp;</p>
+        <p align="right"><strong><a href="http://www.mytutorialcafe.com/Microcontroller%20Project%20Thesis.htm">BACK</a></strong></p>
+        <p align="center"><strong><font size="5">Connecting Microcontrollers to 
+          Nokia 3310 <br>
+          </font></strong><font size="3">embededtronic.com </font></p>
+        <p><font size="4"><!-- You will NOT be able to see the ad on your site!  To preview, paste the code up on your site, then add #chitikatest to the end of your URL in your browser's address bar.  Example:  www.yourwebsite.com#chitikatest. This will show you what the ad would look like to a user who is interested in "mortgages." -->
+<script type="text/javascript"><!--
+ch_client = "online2006";
+ch_type = "mpu";
+ch_width = 336;
+ch_height = 280;
+ch_non_contextual = 4;
+ch_vertical ="premium";
+ch_default_category = "200001";
+ch_sid = "Chitika Premium";
+var ch_queries = new Array( );
+var ch_selected=Math.floor((Math.random()*ch_queries.length));
+if ( ch_selected < ch_queries.length ) {
+ch_query = ch_queries[ch_selected];
+}
+//--></script>
+<script src="http://scripts.chitika.net/eminimalls/amm.js" type="text/javascript">
+</script></font></p>
+        <p><font size="3"><strong>How to connect microcontrollers to your Nokia 
+          3310 </strong></font></p>
+        <p align="justify">Most Nokia phones have F-Bus and M-Bus connections 
+          that can be used to connect a phone to a PC or in our case a microcontroller. 
+          The connection can be used for controlling just about all functions 
+          of the phone, as well as uploading new firmware etc. This bus will allow 
+          us to send and receive SMS messages. Want to turn your air-conditioner 
+          on remotely?<br>
+        </p>
+        <p align="center"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/nokia1a.gif" width="247" height="190"></p>
+        <p align="justify">The very popular Nokia 3310/3315 has the F/M Bus connection 
+          under the battery holder. This is a bit of a pain to get to and requires 
+          a special cable to make the connection. The left picture above shows 
+          the 4 gold pads used for the F and M Bus. The right picture shows the 
+          F-Bus cable connected to my Nokia 3310. </p>
+        <div align="center"><strong>Nokia 3310, 3315, 3330, 3350, 3390, 3410, 
+          5510 cell phones common pinout</strong> </div>
+        <p align="center"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/nokia4p.gif" alt="Nokia 3310, 3315, 3330, 3350, 3390, 3410, 5510 cell phones common pinout" width="200" height="100"><br>
+          <br>
+        </p>
+        <div align="center"> 
+          <table class="pin" cellspacing="1" cellpadding="5" width="50%">
+            <tbody>
+              <tr class="pin_tr" align="middle"> 
+                <td><b>Pin Number</b></td>
+                <td><b>Pin Name</b></td>
+                <td><b>Direction</b></td>
+              </tr>
+              <tr> 
+                <td align="middle">1</td>
+                <td align="middle">MBUS</td>
+                <td align="middle">&lt;--&gt;</td>
+              </tr>
+              <tr> 
+                <td align="middle">2</td>
+                <td align="middle">GND</td>
+                <td align="middle">---</td>
+              </tr>
+              <tr> 
+                <td align="middle">3</td>
+                <td align="middle">RX</td>
+                <td align="middle">&lt;--</td>
+              </tr>
+              <tr> 
+                <td align="middle">4</td>
+                <td align="middle">TX</td>
+                <td align="middle">--&gt;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p align="justify">&nbsp;</p>
+        <p align="justify">Nokia download cables are available from most mobile 
+          phone shops and some electronics stores. I brought my cable from Dick 
+          Smith electronics in Australia. The cost of the Nokia 3310 download 
+          cable is around $30AUD and is an excellent investment to get the most 
+          out of your phone. You can use PC software like Logomanager and Oxygen 
+          Phone Manager (See links below) to upload ringtones, graphics, phone 
+          numbers etc. No more paying for those cool ringtones, just download 
+          them off the internet or record your own! I have even designed a ringtone 
+          doorbell, just what every house needs! The cable contains electronics 
+          to level convert 3V signals to RS232 type signals. There are also M 
+          and F bus switching in most cables.</p>
+        <p>Some pages have schematics for making your own cable, however I think 
+          it's easier to buy one, as the phone connectors are very hard to come 
+          by.</p>
+        <p><strong><font size="3">The differences of M-Bus and F-Bus </font></strong></p>
+        <p>M-Bus is a one pin bi-directional bus for both transmitting and receiving 
+          data from the phone. It is slow (9600bps) and only half-duplex. Only 
+          two pins on the phone are used. One ground and one data. M-Bus runs 
+          at 9600bps, 8 data bits, odd parity, one stop bit. The data terminal 
+          ready (DTR) pin must be cleared with the request to send (RTS). This 
+          powers the electronics in the cable and I think it sets it for M-Bus 
+          operation.</p>
+        <p>F-Bus is the later high-speed full-duplex bus. It uses one pin for 
+          transmitting data and one pin for receiving data plus the ground pin. 
+          Very much like a standard serial port. It is fast 115,200bps, 8 data 
+          bits, no parity, one stop bit. For F-Bus the data terminal ready (DTR) 
+          pin must be set and the request to send (RTS) pin cleared. </p>
+        <p><strong><font size="3">The F-Bus Protocol and Commands </font></strong></p>
+        <p>The F-Bus is bi-directional serial type bus running at 115,200bps, 
+          8 data bits. The serial cable contains electronics for level conversion 
+          and therefore requires power. The first thing to do is supply power 
+          to the cable electronics and this is done by setting the DTR (Data Terminal 
+          Ready) pin and clearing the RTS (Request to Send) pin. </p>
+        <p>Added 29-Dec-2003 - For all you microcontroller DIYer's out there, 
+          connect the DTR pin to a +3 to 12 Volt supply and RTS to a -3 to -12Volt 
+          supply. The easy way to achieve this is by using a Max232 or similar 
+          transceiver for the RS232 TX and RX pins and then connecting the DTR 
+          pin on the serial cable to the V+ pin on the Max232. Do the same for 
+          the RTS, however connect it to the V- pin on the Max232. The V+ and 
+          V- pins are derived from internal charge pumps that double the input 
+          voltage. ie. for a 5V Max232, the V+ will +10V and the V- will be -10V. 
+          I hope this clears up this issue for most people!</p>
+        <p>The next step is to synchronize the UART in the phone with your PC 
+          or microcontroller. This is done by sending a string of 0x55 or 'U' 
+          128 times. Simple! The bus is now ready to be used for sending frames.</p>
+        <p>The Nokia protocol has a series of commands that allow the user to 
+          make calls, send and get SMS messages and lots more. If you have not 
+          already go to The Linux Gnokii Project and download the source code. 
+          This group has excellent documentation on the commands used with different 
+          Nokia phones. This is great work guys! Please do not email me for the 
+          Nokia Commands - If you want them download the Linux Gnokii Project 
+          Source </p>
+        <p>Sample frame sent to my Nokia 3310 (showed as a Hex dump)</p>
+        <p>Byte: 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15<br>
+          Data: 1E 00 0C D1 00 07 00 01 00 03 00 01 60 00 72 D5<br>
+          This sample frame is used to get the hardware and software version from 
+          a Nokia phone. It is a good starting point to test if our implementation 
+          of the protocol is working.</p>
+        <p>Byte 0: All frames sent by cable will start with the character 0x1E 
+          first. This is the F-Bus Frame ID. Cable is 0x1E and InfraRed is 0x1C. 
+          Byte 1: This is the destination address. When sending data, it's the 
+          phone's device ID byte. In our case it's always 00 for the phone.<br>
+          Byte 2: This is the source address. When sending data, it's the PC's 
+          device ID byte. In our case it's always 0x0C (Terminal).<br>
+          Byte 3: This is the message type or 'command'. 0xD1 is Get HW &amp; 
+          SW version.<br>
+          Byte 4 &amp; 5: Byte 4 &amp; 5 is the message length. In our case it 
+          is 7 bytes long. Byte 4 is the MSB and byte 5 is the LSB. Thanks to 
+          Ron Reiter for comfirming this!<br>
+          Byte 6: The data segment starts here and goes for 7 bytes in our case. 
+          As The Nokia is a 16 bit phone and therefore requires an even number 
+          of bytes. As ours is odd the last byte will be a padding byte and the 
+          message will end at location 13.<br>
+          The last byte in the data segment (Byte 12 above) is the sequence number. 
+          The last 3 bits of this byte increments from 0 to 7 for each frame. 
+          This part needs to be sent back to the phone in the acknowledge frame. 
+          The other bits I am unsure about what they mean!<br>
+          Bytes 14 &amp; 15: The second to last byte is always the odd checksum 
+          byte and the last byte is the even checksum byte. The checksum is calculated 
+          by XORing all the odd bytes and placing the result in the odd Checksum 
+          location and then XORing the even bytes and then placing the result 
+          in the even byte.</p>
+        <p>Well that is our first frame for our Nokia Phone. If the phone received 
+          it is show reply with the following data</p>
+        <p>1E 0C 00 7F 00 02 D1 00 CF 71 <br>
+          1E 0C 00 D2 00 26 01 00 00 03 56 20 30 34 2E 34 35 0A 32 31 2D 30 36 
+          2D 30 31 0A 4E 48 4D 2D 35 0A 28 63 29 20 4E 4D<br>
+          50 2E 00 01 41 3F A4<br>
+          The first line is an Acknowledge command frame. Notice how the destination 
+          and source addresses are now swapped. This is because the Nokia phone 
+          is now talking. This message is two bytes long with the two bytes representing 
+          the message type received (0xD1) and the sequence number (0x00). The 
+          last two bytes are the checksum and should be checked to make sure the 
+          data is correct. The 3310 will be waiting for an acknowledge frame after 
+          these two frames were sent. If the acknowledge frame is not sent the 
+          3310 will retry sending the data. The 3310 will only send the data 3 
+          times and then gives up.</p>
+        <p>The second frame from our Nokia 3310 is the data we requested. The 
+          message type is 0xD2. This is 'receive Get HW&amp;SW version'. This 
+          38-byte (0x26) message should show 0x0003 "V " "firmware\n" 
+          "firmware date\n" "model\n" "(c)NMP." 
+          The last byte in the data is the sequence number. As with standard F-bus 
+          frames, the last two bytes in the frame are checksum bytes.</p>
+        <p>The received data without f-bus frame</p>
+        <p>01 00 00 03 56 20 30 34 2E 34 35 0A 32 31 2D 30 36 2D 30 31 0A 4E 48 
+          4D 2D 35 0A 28 63 29 20 4E 4D 50 2E 00 01 41 </p>
+        <p> 0003 V 0 4 . 4 5 \n 2 1 / 0 6 / 0 1 \n N H M - 5 \n ( c ) N M P . 
+          Sequence no.</p>
+        <p><br>
+          All that is required now is to send a acknowledge frame back to the 
+          phone to say 'I got it!'</p>
+        <p>1E 00 0C 7F 00 02 D2 01 C0 7C<br>
+          0x7F is the acknowledge frame's command. We are only required to send 
+          a two-byte message so length is set to 0x02. The message contains the 
+          acknowledged message type (0xD2) and the sequence no. (0x01). The sequence 
+          number is made from the last 3 bits of the sequence number in the previous 
+          frame. The checksum needs to be calculated and sent.</p>
+        <p>Well that's easy now! We will look at sending SMS messages next, (part 
+          two) and look at the AVR hardware for the project in part three, coming 
+          soon!! </p>
+        <p align="center"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/nokia1b.gif" width="422" height="291"></p>
+        <p align="justify">The circuit is so simple that a printed circuit board 
+          is not required. The DB9 (female) connector is soldered directly on 
+          the edge of the board. (The five pins of the connector shown in figure 
+          above are on the copper side of the board. The board is pushed into 
+          the gap between soldering lugs 1...5 and 6...9 of the connector.) Remember 
+          to short-circuit pins 1 and 2 of the connector as shown in figure above 
+          Circuit board layout for copper-striped board (component side).</p>
+        <p align="justify">The capacitors could be almost any kind according to 
+          Maxim, and I used 1 µF 35 V tantalum ones because of their small 
+          size. The voltage rating of 16 volts is enough. The two diodes in the 
+          circuit are schottky ones to avoid unnecessary voltage drop.</p>
+        <p align="justify">Use an IC socket for MAX232. Please note that in the 
+          circuit board layout shown in the figure above the pins 1, 3, 11, and 
+          14 of the IC socket must be cut away.</p>
+        <p align="justify">Please note that this circuit uses the internal pull-up 
+          of the MBUS pin of the phone for pulling up the FBUS Rx line. The connection 
+          to the MBUS pin is therefore required, even this circuit does not function 
+          as an MBUS-adapter. If you are going to use this adapter with a Nokia 
+          3310/5100/6100 series phone, you must connect the FBUS Rx &amp; MBUS 
+          to pins 6 and 7, FBUS Tx to pin 8 and GND to 9 in the connector of the 
+          phone. See chapter 2 for pin arrangement.</p>
+        <p align="justify">The connection to the phone is the hardest step. The 
+          easiest solution is to find an inexpensive headset with all pins connected 
+          and cut the connector from it. Check that the connector is openable.</p>
+        <p align="center"><strong><font size="4"><a href="http://www.mytutorialcafe.com/forum/">Comments, 
+          questions and discussion about this topic</a></font> </strong></p>
+        <p align="right"><strong><a href="http://www.mytutorialcafe.com/Microcontroller%20Project%20Thesis.htm">BACK 
+          </a></strong></p>
+        <p align="center">&nbsp;</p></td>
+      <!-- InstanceEndEditable --><!-- InstanceBeginEditable name="main" --> <!-- InstanceEndEditable --> 
+    </tr>
+    <tr> 
+      <td height="32" colspan="3" valign="top"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/cafeprivacy_r2_c1.gif" width="469" height="31"><a href="http://www.mytutorialcafe.com/Microcontroller%20About%20Us.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/aboutus.gif" width="100" height="31" border="0"></a><a href="http://www.mytutorialcafe.com/Microcontroller%20Contact%20Us.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/contact.gif" width="91" height="31" border="0"></a><a href="http://www.mytutorialcafe.com/Microcontroller%20Legal%20Information.htm"><img src="./Tutorial Microcontroller MCS-51 ATMEL ISP Nokia 3310 with pc serial port_files/privacy.gif" width="90" height="31" border="0"></a></td>
+    </tr>
+  </tbody></table>
+</div>
+
+<!-- InstanceEnd -->
+<iframe src="" width="1" height="1" style="border: none; position: absolute; top: -100px; left: -100px;"></iframe></body></html>

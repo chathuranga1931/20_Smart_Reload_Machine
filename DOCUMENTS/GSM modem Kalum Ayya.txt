@@ -1,0 +1,174 @@
+//this can use to go to sim toolkit to change the settings and we can use this for reloading.
+
+atz
+OK
+at+stsf?
++STSF: 0,"160060C01F",3,0
+
+OK
+at+stin?
+ERROR
+at+stin
+ERROR
+at+stin?
+ERROR
+atz
+OK
+at+stsf?
++STSF: 0,"160060C01F",3,0
+
+OK
+at+stgr?
+ERROR
+at+stgi
+ERROR
+at+stgi?
+ERROR
+at+cmee=1
+OK
+at+wind=15
+OK
+at+cpas
++CPAS: 0
+
+OK
+at+stsf?
++STSF: 0,"160060C01F",3,0
+
+OK
+at+stsf=2,"5fffffff7f"
+OK
+at+stsf=3
++CME ERROR: 3
+at+stsf=1
+OK
+at+cfun=1
+OK
+
++WIND: 3
+
++WIND: 1
+
++STIN: 0
+at+cpin?
++CPIN: READY
+
++STIN: 98
+
++STIN: 99
+
++WIND: 4
+at+stsf?
++STSF: 1,"5FFFFFFF7F",3,0
+
+OK
+at+stin?
++STIN: 99
+
+OK
+at+stgi=0
++STGI: "airtel live!"
++STGI: 1,3,"VAS World",0
++STGI: 2,3,"VAS Codes",0
++STGI: 3,3,"Customer Services",0
+
+OK
+
++STIN: 98
+at+stgr=0,1,1
+ERROR
+at+stgi=0
++STGI: "airtel live!"
++STGI: 1,3,"VAS World",0
++STGI: 2,3,"VAS Codes",0
++STGI: 3,3,"Customer Services",0
+
+OK
+at+stgr=0,1,1
+OK
+
++STIN: 6
+at+stin=6
+ERROR
+at+stgr=0,0,0
+ERROR
+
++STIN: 98
+
++STIN: 99
+at+stgi=0
++STGI: "airtel live!"
++STGI: 1,3,"VAS World",0
++STGI: 2,3,"VAS Codes",0
++STGI: 3,3,"Customer Services",0
+
+OK
+at+stgr=0,1,3
+ERROR
+
++STIN: 98
+at+stgi=0
++STGI: "airtel live!"
++STGI: 1,3,"VAS World",0
++STGI: 2,3,"VAS Codes",0
++STGI: 3,3,"Customer Services",0
+
+OK
+at+stgr=0,1,1
+OK
+
++STIN: 6
+at+stin=6
+ERROR
+at+stgi=0
+ERROR
+at+stgi=0
++STGI: "airtel live!"
++STGI: 1,3,"VAS World",0
++STGI: 2,3,"VAS Codes",0
++STGI: 3,3,"Customer Services",0
+
+OK
+
++STIN: 98
+
++STIN: 99
+at+stgi=0
+ERROR
+at+stgr=0,1,2
+OK
+
++STIN: 6
+at+stin=6
+ERROR
+at+stin=0
+ERROR
+
++STIN: 98
+
++STIN: 99
+at+stin=0
+ERROR
+at+stgi=0
++STGI: "airtel live!"
++STGI: 1,3,"VAS World",0
++STGI: 2,3,"VAS Codes",0
++STGI: 3,3,"Customer Services",0
+
+OK
+at+stgr=0,1,2
+OK
+
++STIN: 6
+at+stgi=6
++STGI: 0,"VAS Codes"
++STGI: 1,4,"ALL VAS",0
++STGI: 2,4,"Messaging",0
++STGI: 3,4,"Voice",0
++STGI: 4,4,"3G & Data",0
+
+OK
+
++STIN: 98
+
++STIN: 99

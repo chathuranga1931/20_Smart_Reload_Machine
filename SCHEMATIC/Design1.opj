@@ -1,0 +1,33 @@
+(ExpressProject "Design1"
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\design1.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x"))
+  (Folder "Outputs")
+  (Folder "Referenced Projects"
+    (File ".\srm.opj"
+      (Type "Orcad Project")))
+  (PartMRUSelector)
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "F:\ELECTRONIC\2015\Projects\20.Low cost reload machine\SCHEMATIC\design1.dsn")
+      (Path "Design Resources"
+         "F:\ELECTRONIC\2015\Projects\20.Low cost reload machine\SCHEMATIC\design1.dsn"
+         "SCHEMATIC1")
+      (Path "Referenced Projects")
+      (Select "Design Resources"
+         "F:\ELECTRONIC\2015\Projects\20.Low cost reload machine\SCHEMATIC\design1.dsn"
+         "Design Cache"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 0 200 0 395"))
+      (Tab 0))))

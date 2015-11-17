@@ -1,0 +1,118 @@
+(ExpressProject "SRM"
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\srm.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "0")
+    (ANNOTATE_Action "0")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "FALSE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}")
+    (Netlist_TAB "5")
+    (LAYOUT_Netlist_File "SRM.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0")
+    (BOM_Scope "0")
+    (BOM_Mode "1")
+    (BOM_Report_File
+       "F:\ELECTRONIC\2015\PROJECTS\20. SMART RELOAD MACHINE\SCHEMATIC\VER2\SRM.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_Header "Item\tQuantity\tReference\tPart")
+    (BOM_Include_File
+       "F:\ELECTRONIC\2015\PROJECTS\20. SMART RELOAD MACHINE\SCHEMATIC\VER2\SRM.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (BOM_View_Output "FALSE"))
+  (Folder "Outputs"
+    (File ".\srm.mnl"
+      (Type "LAYOUT Netlist File"))
+    (File ".\srm.bom"
+      (Type "Report")))
+  (Folder "Referenced Projects")
+  (PartMRUSelector
+    (MUX-08
+      (FullPartName "MUX-08.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\MUXDECODER.OLB")
+      (DeviceIndex "0"))
+    (MUX08/SO
+      (FullPartName "MUX08/SO.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\MUXDECODER.OLB")
+      (DeviceIndex "0"))
+    ("CONN TRBLK 2"
+      (FullPartName "CONN TRBLK 2.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    ("CONN TRBLK 4"
+      (FullPartName "CONN TRBLK 4.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    ("CONNECTOR DB9"
+      (FullPartName "CONNECTOR DB9.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    ("CONN TRBLK 8"
+      (FullPartName "CONN TRBLK 8.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    ("CONN TRBLK 16"
+      (FullPartName "CONN TRBLK 16.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    ("CONN TRBLK 6"
+      (FullPartName "CONN TRBLK 6.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    ("CONN TRBLK 5"
+      (FullPartName "CONN TRBLK 5.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (4094
+      (FullPartName "4094.Normal")
+      (LibraryName "C:\PROGRAM FILES\ORCAD\CAPTURE\LIBRARY\SHIFTREGISTER.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" ".\srm.dsn")
+      (Path "Design Resources" ".\srm.dsn" "SCHEMATIC1")
+      (Path "Design Resources" ".\srm.dsn" "16X2 LCD ")
+      (Path "Design Resources" ".\srm.dsn" "4x4 Key Pad")
+      (Path "Design Resources" ".\srm.dsn" "Computer")
+      (Path "Outputs")
+      (Select "Design Resources" ".\srm.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 0 610 -8 -31 0 246 0 397"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 320 610 -8 -31 130 1284 130 560")
+        (Scroll "0 0")
+        (Zoom "100")
+        (Occurrence "/LCD1"))
+      (Path
+         "F:\ELECTRONIC\2015\PROJECTS\20. SMART RELOAD MACHINE\SCHEMATIC\VER2\SRM.DSN")
+      (Schematic "16X2 LCD ")
+      (Page "PAGE1"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 225 1379 59 489")
+        (Scroll "0 457")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path
+         "F:\ELECTRONIC\2015\PROJECTS\20. SMART RELOAD MACHINE\SCHEMATIC\VER2\SRM.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1"))))
